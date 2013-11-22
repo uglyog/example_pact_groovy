@@ -18,7 +18,7 @@ class Client {
     println data.toString(2)
     def value = data.count / 100
     def fmt = ISODateTimeFormat.dateTimeNoMillis()
-    def date = fmt.parseDateTime(data.date)
+    def date = fmt.parseDateTime(data.valid_date)
     println value
     println date
     [value, date]
