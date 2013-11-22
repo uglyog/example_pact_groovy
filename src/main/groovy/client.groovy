@@ -2,13 +2,15 @@ import groovyx.net.http.HTTPBuilder
 
 
 def load_provider_json() {
-  def http = new HTTPBuilder('http://www.google.com')
-//    response = HTTParty.get(URI::encode('http://localhost:8081/producer.json?valid_date=' + Time.now.httpdate))
-//    if response.success?
-//      JSON.parse(response.body)
-//    end
+  def date = new Date()
+  def http = new HTTPBuilder("http://localhost:8081/")
+  http.get(path: 'provider.json', query: ['valid_date': date]) { response, json ->
+    if (response.success) {
+      println json.dump()
+      json
+    }
+  }
 }
-
 
 println load_provider_json()
 
